@@ -1,4 +1,5 @@
 require('dotenv').config();
+const axios = require('axios');
 const puppeteer = require('puppeteer');
 
 const urls = {
@@ -64,9 +65,30 @@ const purchase_addon = async page => {
     });
 };
 
+const notify_purchase = async ({balance, quota, ratio}, purchase) => {
+  const token = process.env.SKINNY_BOT;
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
+  const params = {
+    chat_id: process.env.SKINNY_CHAT_ID,
+    parse_mode: 'markdown',
+    disable_web_page_preview: true,
+    text: `*Skinny 4G Balance*
+= Remaining: ${(ratio * 100).toFixed(2)}%
+= Data: ${balance}GB of ${quota}GB
+= Threshold: ${(process.env.SKINNY_MINIMUM*100).toFixed(0)}%
+${purchase ? '= *Purchased: $5 Unlimited Data Boost*\n' : ''}= https://reg.t0.vc/1j.nz-skinny`.trim()
+  };
+  try {
+    await axios.post(url, params);
+    console.log(`notification sent.`);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 (async () => {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: true
   });
   const page = await browser.newPage();
 
@@ -74,15 +96,17 @@ const purchase_addon = async page => {
   const { balance, quota, ratio } = await scrape_balance(page);
 
   console.log('balance:', {balance, quota, ratio});
+  console.log('threshold: ', process.env.SKINNY_MINIMUM);
 
   if (ratio < process.env.SKINNY_MINIMUM) {
     console.log('purchasing addon.');
       await purchase_addon(page);
+      await notify_purchase({balance, quota, ratio}, true);
+  } else {
+    await notify_purchase({balance, quota, ratio}, false);
   }
 
-  setTimeout(async () => {
-    console.log('closing chrome.');
-    await page.close();
-    await browser.close();
-  }, 1000);
+  console.log('closing chrome.');
+  await page.close();
+  await browser.close();
 })();

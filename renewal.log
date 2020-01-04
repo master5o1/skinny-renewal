@@ -1,0 +1,55 @@
+Sun 05 Jan 2020 11:04:06 AM UTC
+balance: { balance: 117, quota: 120, ratio: 0.975 }
+threshold:  0.1
+closing chrome.
+
+Sun 05 Jan 2020 12:00:01 PM UTC
+balance: { balance: 117, quota: 120, ratio: 0.975 }
+threshold:  0.1
+closing chrome.
+
+Sun 05 Jan 2020 10:03:20 PM UTC
+balance: { balance: 111, quota: 120, ratio: 0.925 }
+threshold:  0.1
+closing chrome.
+
+Mon 06 Jan 2020 12:00:01 AM UTC
+balance: { balance: 110, quota: 120, ratio: 0.9166666666666666 }
+threshold:  0.1
+closing chrome.
+
+Mon 06 Jan 2020 06:00:01 AM UTC
+balance: { balance: 106, quota: 120, ratio: 0.8833333333333333 }
+threshold:  0.1
+closing chrome.
+
+Mon 06 Jan 2020 08:52:50 AM UTC
+balance: { balance: 103, quota: 120, ratio: 0.8583333333333333 }
+threshold:  0.1
+closing chrome.
+
+Mon 06 Jan 2020 12:00:01 PM UTC
+balance: { balance: 101, quota: 120, ratio: 0.8416666666666667 }
+threshold:  0.1
+closing chrome.
+
+Mon 06 Jan 2020 06:00:01 PM UTC
+balance: { balance: 100, quota: 120, ratio: 0.8333333333333334 }
+threshold:  0.1
+closing chrome.
+
+Tue 07 Jan 2020 12:00:01 AM UTC
+balance: { balance: 95, quota: 120, ratio: 0.7916666666666666 }
+threshold:  0.1
+closing chrome.
+
+Tue 07 Jan 2020 02:34:06 AM UTC
+balance: { balance: 94, quota: 120, ratio: 0.7833333333333333 }
+threshold:  0.1
+closing chrome.
+
+Tue 07 Jan 2020 06:00:01 AM UTC
+balance: { balance: 91, quota: 120, ratio: 0.7583333333333333 }
+threshold:  0.1
+closing chrome.
+
